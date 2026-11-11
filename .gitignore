@@ -33,3 +33,16 @@ qa/
 
 # working material (client screenshots), kept out of the public repo
 references/
+
+# from create-next-app
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+/coverage
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
