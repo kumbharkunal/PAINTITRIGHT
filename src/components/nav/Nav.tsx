@@ -111,7 +111,15 @@ export function Nav() {
       root.dataset.menu = "open";
       lockScroll(true);
       others.forEach((el) => (el.inert = true));
-      const id = window.setTimeout(() => firstLink.current?.focus({ preventScroll: true }), 60);
+      // the sheet becomes visible when its open animation starts; keep trying until focus lands
+      let tries = 0;
+      let id = 0;
+      const attempt = () => {
+        const el = firstLink.current;
+        el?.focus({ preventScroll: true });
+        if (el && document.activeElement !== el && tries++ < 14) id = window.setTimeout(attempt, 45);
+      };
+      id = window.setTimeout(attempt, 30);
       return () => window.clearTimeout(id);
     }
     if (!wasOpen.current) return; // nothing to undo on first mount

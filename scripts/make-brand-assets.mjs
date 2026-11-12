@@ -30,7 +30,7 @@ mkdirSync("public/textures", { recursive: true });
   }
   await sharp(px, { raw: { width: W, height: W, channels: 4 } }).png({ compressionLevel: 9 }).toFile("public/textures/grain.png");
 }
-// overspray: a soft vertical band with atomised speckle, used on the moving pass front
+// overspray (unused since the band became CSS gradients; kept for reference)
 {
   const W = 240, H = 480, px = Buffer.alloc(W * H * 4);
   let seed = 11;

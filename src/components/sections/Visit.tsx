@@ -85,14 +85,14 @@ export function Visit() {
             ) : null}
             <span className="map-pin" aria-hidden="true" data-pin>
               <span className="map-ring" />
-              <span className="map-pin-body glass rounded-full">
+              <span className="map-pin-body chip-solid rounded-full">
                 <span className="nav-dot scale-125">
                   <i />
                   <i />
                 </span>
               </span>
             </span>
-            <span className="glass absolute bottom-4 left-4 flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors group-hover:bg-graphite-2">Open in Google Maps</span>
+            <span className="chip-solid absolute bottom-4 left-4 flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors group-hover:bg-graphite-2">Open in Google Maps</span>
             <span className="absolute bottom-2 right-3 text-[0.625rem] text-steel/80">Map data © OpenStreetMap contributors</span>
           </a>
         </div>

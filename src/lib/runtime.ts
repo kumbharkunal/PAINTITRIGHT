@@ -49,13 +49,14 @@ export function startRuntime() {
     { desktop: "(min-width: 1024px)", mobile: "(max-width: 1023px)", reduce: "(prefers-reduced-motion: reduce)" },
     (ctx) => {
       const { desktop, reduce: rm } = ctx.conditions as { desktop: boolean; mobile: boolean; reduce: boolean };
-      reveals(rm);
-      if (rm) return;
+      const stopReveals = reveals(rm);
+      if (rm) return stopReveals;
       heroScroll(desktop);
       processScene(desktop);
       drift(desktop);
       finalPass();
       pinDrop();
+      return stopReveals;
     },
   );
   undo.push(() => mm.revert());
@@ -81,81 +82,105 @@ export function startRuntime() {
 }
 
 // ───────────────────────── reveals (each kind has its own entrance) ─────────────────────────
+// One-shot entrances fire from an IntersectionObserver, not ScrollTrigger positions: they
+// play whenever the element really enters the viewport, however the layout moved after
+// setup (images, accordions, fonts), so nothing can stay hidden.
 function reveals(rm: boolean) {
-  const once = (el: Element, start = "top 88%") => ({ trigger: el, start, once: true });
+  const observers: IntersectionObserver[] = [];
+  const onEnter = (el: Element, play: () => void, margin = "0px 0px -10% 0px") => {
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          io.disconnect();
+          play();
+        }
+      },
+      { rootMargin: margin },
+    );
+    io.observe(el);
+    observers.push(io);
+  };
+  // reduced motion: a plain fade, nothing moves
+  const fadeOnly = (el: Element) => {
+    gsap.set(el, { opacity: 0 });
+    onEnter(el, () => gsap.to(el, { opacity: 1, duration: 0.5, ease: "none" }));
+  };
 
   // headings: masked lines rise (SplitText), the slash marker strikes
   $('[data-reveal="lines"]').forEach((el) => {
     if (inView(el)) return;
-    if (rm) {
-      gsap.from(el, { opacity: 0, duration: 0.5, scrollTrigger: once(el) });
-      return;
-    }
+    if (rm) return fadeOnly(el);
     let played = false;
+    let lines: Element[] = [];
     SplitText.create(el, {
       type: "lines",
       mask: "lines",
       autoSplit: true,
       aria: "auto",
       onSplit(self) {
-        if (played) return;
-        return gsap.from(self.lines, {
-          yPercent: 110,
-          duration: 0.9,
-          ease: "set",
-          stagger: 0.07,
-          scrollTrigger: { ...once(el, "top 86%"), onEnter: () => (played = true) },
-        });
+        lines = self.lines;
+        if (!played) gsap.set(lines, { yPercent: 110 });
       },
     });
     const marks = $("[data-reveal-marker] i", el);
-    if (marks.length) gsap.from(marks, { scaleY: 0, transformOrigin: "50% 0%", duration: 0.32, ease: "set", stagger: 0.07, delay: 0.25, scrollTrigger: once(el, "top 86%") });
+    if (marks.length) gsap.set(marks, { scaleY: 0, transformOrigin: "50% 0%" });
+    onEnter(el, () => {
+      played = true;
+      gsap.to(lines, { yPercent: 0, duration: 0.9, ease: "set", stagger: 0.07 });
+      if (marks.length) gsap.to(marks, { scaleY: 1, duration: 0.32, ease: "set", stagger: 0.07, delay: 0.25 });
+    });
   });
 
   // copy and small blocks: a short rise
   $('[data-reveal="fade"]').forEach((el) => {
     if (inView(el)) return;
-    gsap.from(el, rm ? { opacity: 0, duration: 0.5, scrollTrigger: once(el) } : { opacity: 0, y: 26, duration: 0.85, ease: "set", scrollTrigger: once(el) });
+    if (rm) return fadeOnly(el);
+    gsap.set(el, { opacity: 0, y: 26 });
+    onEnter(el, () => gsap.to(el, { opacity: 1, y: 0, duration: 0.85, ease: "set" }));
   });
 
   // media frames open upward along their notched outline, then hand back to CSS
   $('[data-reveal="clip"]').forEach((el) => {
     if (inView(el)) return;
-    if (rm) {
-      gsap.from(el, { opacity: 0, duration: 0.5, scrollTrigger: once(el) });
-      return;
-    }
+    if (rm) return fadeOnly(el);
     const w = el.offsetWidth, h = el.offsetHeight;
     const n = window.innerWidth >= 1024 ? 24 : 14;
     const closed = `polygon(0px ${h}px, ${w - n}px ${h}px, ${w}px ${h}px, ${w}px ${h}px, 0px ${h}px)`;
     const shape = `polygon(0px 0px, ${w - n}px 0px, ${w}px ${n / NOTCH_SLOPE}px, ${w}px ${h}px, 0px ${h}px)`;
-    gsap.fromTo(el, { clipPath: closed }, { clipPath: shape, duration: 1.1, ease: "set", clearProps: "clipPath", scrollTrigger: once(el, "top 85%") });
+    gsap.set(el, { clipPath: closed });
+    onEnter(el, () => gsap.to(el, { clipPath: shape, duration: 1.1, ease: "set", clearProps: "clipPath" }));
   });
 
   // the Why plate: rows print in, left to right, like a label printer
   $('[data-reveal="plate"]').forEach((plate) => {
     if (inView(plate)) return;
+    if (rm) return fadeOnly(plate);
     const rows = $("[data-plate-row]", plate);
-    if (rm) {
-      gsap.from(plate, { opacity: 0, duration: 0.5, scrollTrigger: once(plate) });
-      return;
-    }
-    gsap.from(plate, { opacity: 0, y: 30, duration: 0.8, ease: "set", scrollTrigger: once(plate, "top 85%") });
-    gsap.from(rows, { clipPath: "inset(0% 100% 0% 0%)", duration: 0.75, ease: "pass", stagger: 0.09, delay: 0.2, clearProps: "clipPath", scrollTrigger: once(plate, "top 85%") });
+    gsap.set(plate, { opacity: 0, y: 30 });
+    gsap.set(rows, { clipPath: "inset(0% 100% 0% 0%)" });
+    onEnter(plate, () => {
+      gsap.to(plate, { opacity: 1, y: 0, duration: 0.8, ease: "set" });
+      gsap.to(rows, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.75, ease: "pass", stagger: 0.09, delay: 0.2, clearProps: "clipPath" });
+    });
   });
 
   // rails (videos): cards rise from a bottom edge, staggered by importance
   $('[data-reveal="rail"]').forEach((rail) => {
     if (inView(rail)) return;
+    if (rm) return fadeOnly(rail);
     const kids = Array.from(rail.children).filter((c) => (c as HTMLElement).offsetWidth > 2);
-    gsap.from(kids, rm ? { opacity: 0, duration: 0.5, scrollTrigger: once(rail) } : { y: 60, opacity: 0, duration: 0.9, ease: "set", stagger: (i) => i * 0.06 + (i ? 0.05 : 0), scrollTrigger: once(rail, "top 85%") });
+    gsap.set(kids, { y: 60, opacity: 0 });
+    onEnter(rail, () => gsap.to(kids, { y: 0, opacity: 1, duration: 0.9, ease: "set", stagger: (i) => i * 0.06 + (i ? 0.05 : 0) }));
   });
 
   // the offer strip's slashes strike
-  $('[data-reveal="cut"] i').forEach((el, i) => {
-    if (inView(el)) return;
-    gsap.from(el, { scaleY: 0, transformOrigin: "50% 0%", duration: 0.4, ease: "set", delay: i * 0.08, scrollTrigger: once(el, "top 92%") });
-  });
+  const cuts = $('[data-reveal="cut"] i');
+  if (cuts.length && !rm && !inView(cuts[0])) {
+    gsap.set(cuts, { scaleY: 0, transformOrigin: "50% 0%" });
+    onEnter(cuts[0], () => gsap.to(cuts, { scaleY: 1, duration: 0.4, ease: "set", stagger: 0.08 }), "0px 0px -4% 0px");
+  }
+
+  return () => observers.forEach((io) => io.disconnect());
 }
 
 // ───────────────────────── hero: scroll parallax (the intro itself is CSS) ─────────────────────────

@@ -110,12 +110,12 @@ export function CompareSlider({ before, after, tag }: { before: StaticImageData;
         <Img src={before} alt="Before: the panel with swirl marks, scratches and dull patches" sizes="(min-width: 1024px) 55vw, 100vw" />
       </div>
       <div className="compare-line" aria-hidden="true" />
-      <span className="compare-tag glass label left-4">Before</span>
-      <span className="compare-tag glass label right-4">After</span>
+      <span className="compare-tag label left-4">Before</span>
+      <span className="compare-tag label right-4">After</span>
       {tag ? <span className="label steel absolute bottom-3 right-4 opacity-80">{tag}</span> : null}
       <div
         ref={handle}
-        className="compare-handle glass"
+        className="compare-handle chip-solid"
         role="slider"
         tabIndex={0}
         aria-label="Before and after comparison"
