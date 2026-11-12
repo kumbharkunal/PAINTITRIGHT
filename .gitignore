@@ -46,3 +46,6 @@ references/
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+
+.vercel
+.env*
