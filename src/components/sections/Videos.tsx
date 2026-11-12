@@ -15,7 +15,7 @@ export function Videos() {
             {v.intro}
           </p>
         </div>
-        <a href={site.socials.youtube.url} target="_blank" rel="noopener noreferrer" className="link-draw inline-flex items-center gap-3 self-start font-semibold lg:self-auto" data-reveal="fade">
+        <a href={site.socials.youtube.url} target="_blank" rel="noopener noreferrer" className="link-draw inline-flex min-h-11 items-center gap-3 self-start font-semibold lg:self-auto" data-reveal="fade">
           <SocialLogo name="youtube" size={24} />
           {site.socials.youtube.handle}
         </a>

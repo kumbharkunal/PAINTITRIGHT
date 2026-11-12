@@ -42,7 +42,7 @@ export function Work() {
             <p className="steel text-lead mt-6 max-w-sm" data-reveal="fade">
               {w.intro}
             </p>
-            <a href={site.socials.instagram.url} target="_blank" rel="noopener noreferrer" className="link-draw mt-8 inline-flex items-center gap-3 font-semibold" data-reveal="fade">
+            <a href={site.socials.instagram.url} target="_blank" rel="noopener noreferrer" className="link-draw mt-6 inline-flex min-h-11 items-center gap-3 font-semibold" data-reveal="fade">
               <SocialLogo name="instagram" size={22} />
               {site.socials.instagram.handle}
             </a>

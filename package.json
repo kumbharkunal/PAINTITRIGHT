@@ -6,7 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:e2e": "playwright test",
+    "qa:review": "node scripts/qa-review.mjs",
+    "qa:paint": "node scripts/qa-paint.mjs",
+    "placeholders": "node scripts/make-placeholders.mjs",
+    "thumbs": "node scripts/fetch-yt-thumbs.mjs"
   },
   "dependencies": {
     "@gsap/react": "2.1.2",
@@ -20,6 +25,7 @@
     "react-dom": "19.3.1"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
     "@playwright/test": "1.64.1",
     "@tailwindcss/turbopack": "4.3.5",
     "@types/node": "24.19.2",

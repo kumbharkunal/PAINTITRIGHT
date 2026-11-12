@@ -53,10 +53,10 @@ export function Footer() {
           <nav className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7" aria-label="Footer">
             <div>
               <p className="label steel">Explore</p>
-              <ul className="mt-4 space-y-2.5">
+              <ul className="mt-3 lg:mt-4 lg:space-y-2.5">
                 {site.nav.map((n) => (
                   <li key={n.id}>
-                    <a href={`#${n.id}`} className="link-draw">
+                    <a href={`#${n.id}`} className="link-draw inline-flex min-h-11 min-w-11 items-center lg:min-h-0 lg:min-w-0">
                       {n.label}
                     </a>
                   </li>
@@ -65,15 +65,15 @@ export function Footer() {
             </div>
             <div>
               <p className="label steel">Contact</p>
-              <ul className="mt-4 space-y-2.5">
+              <ul className="mt-3 lg:mt-4 lg:space-y-2.5">
                 <li>
-                  <a href={waLink(site.wa.book)} target="_blank" rel="noopener noreferrer" className="link-draw tabular">
+                  <a href={waLink(site.wa.book)} target="_blank" rel="noopener noreferrer" className="link-draw tabular inline-flex min-h-11 items-center lg:min-h-0">
                     WhatsApp {site.whatsapp.display}
                   </a>
                 </li>
                 {site.phones.map((p, i) => (
                   <li key={p.tel}>
-                    <a href={telLink(i)} className="link-draw tabular">
+                    <a href={telLink(i)} className="link-draw tabular inline-flex min-h-11 items-center lg:min-h-0">
                       Call {p.display}
                     </a>
                   </li>
@@ -87,10 +87,10 @@ export function Footer() {
             </div>
             <div>
               <p className="label steel">Follow</p>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-3 lg:mt-4 lg:space-y-3">
                 {socials.map((s) => (
                   <li key={s}>
-                    <a href={site.socials[s].url} target="_blank" rel="noopener noreferrer" className="link-draw inline-flex items-center gap-2.5">
+                    <a href={site.socials[s].url} target="_blank" rel="noopener noreferrer" className="link-draw inline-flex min-h-11 items-center gap-2.5 lg:min-h-0">
                       <SocialLogo name={s as Social} size={18} />
                       {s === "youtube" ? "YouTube" : s[0].toUpperCase() + s.slice(1)}
                     </a>
