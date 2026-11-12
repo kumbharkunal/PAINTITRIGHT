@@ -1,6 +1,7 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
+import { Img } from "@/components/ui/Img";
 import { AnimatePresence, LayoutGroup, m } from "motion/react";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight01Icon } from "@hugeicons/core-free-icons";
@@ -81,7 +82,7 @@ export function ServicesList({ items }: { items: Item[] }) {
             {items.map((it, i) => (
               <div key={it.id} className="svc-layer" data-shown={stack.includes(i)} style={{ zIndex: stack.indexOf(i) + 1 }} aria-hidden={i !== active}>
                 {loaded.has(i) ? (
-                  <Image src={it.image} alt={i === active ? it.alt : ""} fill sizes="(min-width: 1440px) 560px, 40vw" quality={72} placeholder="blur" className="object-cover" />
+                  <Img src={it.image} alt={i === active ? it.alt : ""} sizes="(min-width: 1440px) 560px, 40vw" />
                 ) : null}
               </div>
             ))}
@@ -163,7 +164,7 @@ export function ServicesList({ items }: { items: Item[] }) {
                         exit={{ opacity: 0, transition: { duration: 0.14 } }}
                       >
                         <div className="relative aspect-[4/5] overflow-hidden notch bg-graphite">
-                          <Image src={it.image} alt={it.alt} fill sizes="(max-width: 1023px) 92vw, 1px" quality={72} placeholder="blur" className="object-cover" />
+                          <Img src={it.image} alt={it.alt} sizes="(max-width: 1023px) 92vw, 1px" />
                         </div>
                         <ul className="mt-5 space-y-2 text-[0.9375rem] text-paper/85">
                           {it.points.map((p) => (

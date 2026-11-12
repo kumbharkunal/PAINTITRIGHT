@@ -1,6 +1,7 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
+import { Img } from "./Img";
 import { useRef, useState } from "react";
 import { PlayIcon } from "@hugeicons/core-free-icons";
 import { Icon } from "./Icon";
@@ -31,7 +32,7 @@ export function VideoFacade({ id, title, duration, thumb, sizes, className = "" 
 
   return (
     <button type="button" className={`facade notch text-left ${className}`} onClick={() => setPlaying(true)} data-cursor="Play" aria-label={`Play video: ${title} (${duration})`}>
-      <Image src={thumb} alt="" fill sizes={sizes} quality={72} placeholder="blur" className="object-cover" />
+      <Img src={thumb} alt="" sizes={sizes} />
       <span className="facade-shade" aria-hidden="true" />
       <span className="play" aria-hidden="true">
         <Icon icon={PlayIcon} size={20} className="translate-x-px text-white" />

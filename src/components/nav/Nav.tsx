@@ -8,6 +8,7 @@ import { LogoMark, Wordmark } from "@/components/brand/Logo";
 import { Icon } from "@/components/ui/Icon";
 import { SocialLogo, type Social } from "@/components/ui/SocialLogo";
 import { lockScroll, scrollToId } from "@/lib/scroll";
+import { loadMotionFeatures } from "@/components/motion/MotionProvider";
 import { SPRING, SPRING_FAST } from "@/lib/motion";
 
 const DESKTOP = site.nav.filter((n) => n.desktop);
@@ -110,8 +111,8 @@ export function Nav() {
       root.dataset.menu = "open";
       lockScroll(true);
       others.forEach((el) => (el.inert = true));
-      const id = requestAnimationFrame(() => firstLink.current?.focus({ preventScroll: true }));
-      return () => cancelAnimationFrame(id);
+      const id = window.setTimeout(() => firstLink.current?.focus({ preventScroll: true }), 60);
+      return () => window.clearTimeout(id);
     }
     if (!wasOpen.current) return; // nothing to undo on first mount
     wasOpen.current = false;
@@ -238,7 +239,11 @@ export function Nav() {
           aria-expanded={open}
           aria-controls="site-menu"
           aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => (open ? close(true) : setOpen(true))}
+          onPointerDown={() => void loadMotionFeatures()}
+          onClick={() => {
+            if (open) close(true);
+            else loadMotionFeatures().then(() => requestAnimationFrame(() => setOpen(true)));
+          }}
         >
           <i />
           <i />

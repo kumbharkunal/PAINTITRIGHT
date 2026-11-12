@@ -1,6 +1,7 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
+import { Img } from "@/components/ui/Img";
 import { useCallback, useEffect, useRef, type KeyboardEvent } from "react";
 
 // Before/after with a divider leaning at the logo's slash angle. Drag anywhere (mouse or
@@ -104,9 +105,9 @@ export function CompareSlider({ before, after, tag }: { before: StaticImageData;
 
   return (
     <div ref={box} className="compare notch" data-cursor="Drag" data-reveal="clip">
-      <Image src={after} alt="After: the same panel, polished to a deep, clear gloss" fill sizes="(min-width: 1024px) 55vw, 100vw" quality={72} placeholder="blur" className="object-cover" />
+      <Img src={after} alt="After: the same panel, polished to a deep, clear gloss" sizes="(min-width: 1024px) 55vw, 100vw" />
       <div className="compare-before">
-        <Image src={before} alt="Before: the panel with swirl marks, scratches and dull patches" fill sizes="(min-width: 1024px) 55vw, 100vw" quality={72} placeholder="blur" className="object-cover" />
+        <Img src={before} alt="Before: the panel with swirl marks, scratches and dull patches" sizes="(min-width: 1024px) 55vw, 100vw" />
       </div>
       <div className="compare-line" aria-hidden="true" />
       <span className="compare-tag glass label left-4">Before</span>
