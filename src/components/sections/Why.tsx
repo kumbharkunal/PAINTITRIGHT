@@ -13,7 +13,7 @@ export function Why() {
       <div className="wrap relative grid gap-0 lg:grid-cols-12">
         <div className="relative lg:col-span-7 lg:col-start-6 lg:row-start-1">
           <div className="relative aspect-[3/2] overflow-hidden notch" data-parallax="6">
-            <Image src={IMG.craft} alt={w.imageAlt} fill sizes="(min-width: 1024px) 58vw, 100vw" quality={72} placeholder="blur" />
+            <Image src={IMG.craft} alt={w.imageAlt} fill sizes="(min-width: 1024px) 58vw, 100vw" quality={72} placeholder="blur" className="object-cover" />
           </div>
         </div>
 

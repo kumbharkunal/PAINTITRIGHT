@@ -12,7 +12,7 @@ function Tile({ job, sizes, className = "" }: { job: Job; sizes: string; classNa
   return (
     <a href={job.reel} target="_blank" rel="noopener noreferrer" className={`tile ${className}`} data-cursor="View">
       <div className="tile-media notch">
-        <Image src={IMG.work[job.id]} alt={`${job.car}: ${job.story}`} fill sizes={sizes} quality={72} placeholder="blur" />
+        <Image src={IMG.work[job.id]} alt={`${job.car}: ${job.story}`} fill sizes={sizes} quality={72} placeholder="blur" className="object-cover" />
       </div>
       <div className="tile-cap mt-4 flex items-start justify-between gap-4">
         <div>

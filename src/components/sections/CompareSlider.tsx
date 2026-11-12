@@ -104,9 +104,9 @@ export function CompareSlider({ before, after, tag }: { before: StaticImageData;
 
   return (
     <div ref={box} className="compare notch" data-cursor="Drag" data-reveal="clip">
-      <Image src={after} alt="After: the same panel, polished to a deep, clear gloss" fill sizes="(min-width: 1024px) 55vw, 100vw" quality={72} placeholder="blur" />
+      <Image src={after} alt="After: the same panel, polished to a deep, clear gloss" fill sizes="(min-width: 1024px) 55vw, 100vw" quality={72} placeholder="blur" className="object-cover" />
       <div className="compare-before">
-        <Image src={before} alt="Before: the panel with swirl marks, scratches and dull patches" fill sizes="(min-width: 1024px) 55vw, 100vw" quality={72} placeholder="blur" />
+        <Image src={before} alt="Before: the panel with swirl marks, scratches and dull patches" fill sizes="(min-width: 1024px) 55vw, 100vw" quality={72} placeholder="blur" className="object-cover" />
       </div>
       <div className="compare-line" aria-hidden="true" />
       <span className="compare-tag glass label left-4">Before</span>

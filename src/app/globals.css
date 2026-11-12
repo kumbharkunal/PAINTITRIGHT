@@ -253,6 +253,7 @@ html.is-locked, html.is-locked body { overflow: hidden; }
   .hero-scrim { background: linear-gradient(0deg, rgb(8 9 11 / 0.96) 0%, rgb(8 9 11 / 0.8) 32%, rgb(8 9 11 / 0) 62%), linear-gradient(180deg, rgb(8 9 11 / 0.5) 0%, rgb(8 9 11 / 0) 22%); }
 }
 .hero-grain { position: absolute; inset: 0; opacity: 0.5; pointer-events: none; }
+.hero-content.wrap { max-width: 1760px; }
 .hero-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: flex-end;
   padding-bottom: max(28px, env(safe-area-inset-bottom)); }
 @media (min-width: 1024px) { .hero-content { padding-bottom: clamp(48px, 7vh, 88px); } }
@@ -328,7 +329,9 @@ html.is-locked, html.is-locked body { overflow: hidden; }
 .process[data-pinned="true"] .process-pin { height: 100svh; display: grid; align-content: center; }
 .process[data-pinned="true"] .process-steps { position: relative; height: 14.5rem; }
 .process[data-pinned="true"] .process-steps li { position: absolute; inset: 0; margin: 0; }
+.process-meta { display: none; }
 .process[data-pinned="true"] .process-meta { display: flex; }
+.process-steps h3 { font-stretch: 100%; }
 .process-ticks { display: flex; gap: 8px; }
 .process-ticks i { position: relative; overflow: hidden; width: 5px; height: 22px; background: var(--color-line-strong); transform: skewX(var(--slash)); }
 .process-ticks b { position: absolute; inset: 0; background: var(--color-signal); transform-origin: 50% 100%; }

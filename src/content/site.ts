@@ -97,39 +97,39 @@ export const site = {
 
   services: {
     title: "Paint. Protect. Detail.",
-    intro: "One studio for the whole job, so the panel that gets painted is the panel that gets protected.",
+    intro: "One studio for the whole job. We protect the same panels we paint.",
     items: [
       {
         id: "paint-respray",
         group: "Paint" as ServiceGroup,
         name: "Car painting & full-body resprays",
-        short: "Single panels to complete colour changes, matched to your car's paint.",
+        short: "From a single panel to a full colour change.",
         points: [
-          "Dents and damaged panels repaired before paint, like the Maybach GLS door we restored.",
-          "Colour matching checked by the owner on every job.",
-          "Trims and cladding painted gloss piano black, as on a Porsche Macan.",
+          "We repair dents and damaged panels before painting, like the door on a Maybach GLS.",
+          "The owner checks the colour match on every job.",
+          "We paint dull trims and cladding gloss piano black, as we did on a Porsche Macan.",
         ],
       },
       {
         id: "scratch-correction",
         group: "Paint" as ServiceGroup,
         name: "Scratch repair & paint correction",
-        short: "Swirls, holograms and light scratches cut out of the clear coat, not hidden under glaze.",
+        short: "We cut swirls, holograms and light scratches out of the clear coat.",
         points: [
-          "Machine polishing in stages, from cutting to finishing.",
-          "Deep scratches get a straight answer: polish, touch-up or repaint.",
-          "Best done before PPF or ceramic, so nothing gets sealed in.",
+          "We machine polish in stages, from cutting to finishing.",
+          "For deep scratches you get a straight answer: polish, touch-up or repaint.",
+          "Do it before PPF or ceramic, so the film or coating seals in a clean finish.",
         ],
       },
       {
         id: "paint-restoration",
         group: "Paint" as ServiceGroup,
         name: "Paint restoration",
-        short: "Faded, oxidised or damaged paint brought back, panel by panel.",
+        short: "We bring back faded, oxidised or damaged paint, panel by panel.",
         points: [
-          "Bumpers restored instead of replaced, like the BMW X7 that came in cracked.",
-          "Original parts kept wherever they can be saved.",
-          "Full restorations too, like the BMW Z4.",
+          "We restore bumpers instead of replacing them, like the cracked one on a BMW X7.",
+          "We keep the original parts when they can be saved.",
+          "Full restorations too, like a BMW Z4 with a smashed front and rear.",
         ],
       },
       {
@@ -138,7 +138,7 @@ export const site = {
         name: "Paint protection film (PPF)",
         short: "Clear film that takes the stone chips, scratches and bird droppings instead of your paint.",
         points: [
-          "Fitted on cars like the Mercedes GLC 300, Toyota Vellfire and MG Majestor.",
+          "We have fitted it on a Mercedes GLC 300, a Toyota Vellfire and an MG Majestor.",
           "Lifetime warranty on PPF. Ask us for the full terms.",
           "Pair it with a repaint or correction first, so the film seals in a clean finish.",
         ],
@@ -149,8 +149,8 @@ export const site = {
         name: "Ceramic coating",
         short: "A hard, glossy layer that sheds Delhi dust and makes every wash quicker.",
         points: [
-          "3M ceramic coating on the BMW M2 we finished recently.",
-          "Deep gloss on freshly detailed paint, as on the BMW X3 and Toyota Camry.",
+          "We used 3M ceramic coating on a BMW M2.",
+          "We apply it over detailed paint for depth, as on a BMW X3 and a Toyota Camry.",
           "Water beads and runs off instead of drying into spots.",
         ],
       },
@@ -161,7 +161,7 @@ export const site = {
         short: "Windscreen and window coating, so monsoon rain beads up and runs off.",
         points: [
           "A clearer view through heavy rain.",
-          "Dust and bird droppings wipe off more easily.",
+          "Dust and bird droppings come off with a wipe.",
           "Works on the windscreen, side windows and mirrors.",
         ],
       },
@@ -171,7 +171,7 @@ export const site = {
         name: "Complete car detailing & polishing",
         short: "A full wash, decontamination and machine polish that resets the whole car.",
         points: [
-          "Tar, iron fallout and road film lifted before any polishing.",
+          "We lift tar, iron fallout and road film before polishing.",
           "Machine polish for depth and gloss.",
           "The right preparation before any coating.",
         ],
@@ -180,10 +180,10 @@ export const site = {
         id: "interior-detailing",
         group: "Detail" as ServiceGroup,
         name: "Interior detailing",
-        short: "Seats, carpets, roof lining and vents cleaned deep, including the dust Delhi pushes into every gap.",
+        short: "We deep clean seats, carpets, roof lining and vents, including the dust that gets into every gap.",
         points: [
-          "Leather and fabric cleaned to suit the material.",
-          "Dashboards, door pads and vents detailed by hand.",
+          "We clean leather and fabric to suit each material.",
+          "We detail dashboards, door pads and vents by hand.",
           "Ready for the daily commute again.",
         ],
       },
@@ -191,7 +191,7 @@ export const site = {
         id: "interior-plastic-coating",
         group: "Detail" as ServiceGroup,
         name: "Interior plastic coating",
-        short: "Dashboards and trims coated so they stop fading and cracking in 45°C summers.",
+        short: "We coat dashboards and trims so they stop fading and cracking in 45°C summers.",
         points: [
           "Brings back an even finish on faded plastics.",
           "Easier to wipe clean.",
@@ -203,8 +203,8 @@ export const site = {
 
   results: {
     title: "Same panel. Before and after.",
-    lead: "Swirls and scratches cut out of the clear coat, then locked in with ceramic or PPF.",
-    points: ["Swirls and holograms polished out, not filled in", "Depth and clarity back in the paint", "Protected so it stays that way"],
+    lead: "We cut swirls and scratches out of the clear coat, then lock the finish in with ceramic or PPF.",
+    points: ["Swirls and holograms polished out", "Depth and clarity back in the paint", "Protected so it stays that way"],
     cta: "Get your car inspected",
     // TODO(client): replace with a real before/after pair (Macan cladding or X7 bumper), then drop this tag
     tag: "Illustration",
@@ -213,11 +213,11 @@ export const site = {
   process: {
     title: "Seven passes before your car goes home.",
     steps: [
-      { title: "Inspection", text: "Every panel looked at under strong light, noting what Delhi has done to it: swirls, scratches, stone chips, a tired clear coat." },
-      { title: "Wash & decontamination", text: "A full wash, then road tar, iron fallout and the fine dust that bonds to paint are lifted off, so nothing gets ground in." },
-      { title: "Paint correction", text: "Machine polishing cuts swirls and light scratches out of the clear coat and brings the depth back." },
-      { title: "Prep", text: "Edges and trims masked, every surface wiped clean, so film, coating or paint bonds properly." },
-      { title: "PPF, coating or paint", text: "The chosen finish goes on: a fresh coat of paint, clear protection film, ceramic, or the right mix of them." },
+      { title: "Inspection", text: "We check every panel under strong light for what Delhi has done to it: swirls, scratches, stone chips, a tired clear coat." },
+      { title: "Wash & decontamination", text: "A full wash, then we lift off road tar, iron fallout and the fine dust that bonds to paint, so none of it gets ground in." },
+      { title: "Paint correction", text: "We machine polish swirls and light scratches out of the clear coat and bring the depth back." },
+      { title: "Prep", text: "We mask edges and trims and wipe every surface clean, so film, coating or paint can bond." },
+      { title: "PPF, coating or paint", text: "Then the finish goes on: fresh paint, clear protection film, ceramic, or a mix of them." },
       { title: "Cure", text: "Paint and coatings get the time they need to harden before the car faces sun, rain and dust again." },
       { title: "QC & handover", text: "A last check under the lights, then aftercare tips and your warranty details when you collect the car." },
     ],
@@ -227,20 +227,20 @@ export const site = {
     title: "Recent work.",
     intro: "Real cars from the studio. Tap a job to watch the reel.",
     items: [
-      { id: "bmw-x7-bumper", car: "BMW X7", service: "Bumper restoration", story: "A cracked bumper, restored instead of replaced.", reel: "https://www.instagram.com/reel/DeY2FqdjMGf/" },
+      { id: "bmw-x7-bumper", car: "BMW X7", service: "Bumper restoration", story: "Cracked bumper. We restored it instead of replacing it.", reel: "https://www.instagram.com/reel/DeY2FqdjMGf/" },
       { id: "porsche-macan-piano-black", car: "Porsche Macan", service: "Piano black finish", story: "Dull plastic cladding, now gloss piano black.", reel: "https://www.instagram.com/reel/DeS6JKIAQ-n/" },
-      { id: "bmw-z4-restoration", car: "BMW Z4", service: "Repaint & restoration", story: "Smashed front and rear, repainted and brought back.", reel: "https://www.instagram.com/reel/DfB_eteih-I/" },
+      { id: "bmw-z4-restoration", car: "BMW Z4", service: "Repaint & restoration", story: "Smashed front and rear. We repainted it and brought it back.", reel: "https://www.instagram.com/reel/DfB_eteih-I/" },
       { id: "mercedes-s-class-repaint-ppf", car: "Mercedes S-Class", service: "Repaint + PPF", story: "The repaint brought the look back. PPF locks it in.", reel: "https://www.instagram.com/reel/DceUAMwTnCT/" },
       { id: "mercedes-glc-ppf", car: "Mercedes GLC 300", service: "Paint protection film", story: "Clear film over the original paint.", reel: "https://www.instagram.com/reel/DfJ4iTFAtJT/" },
-      { id: "bmw-x3-ceramic", car: "BMW X3", service: "Detailing + ceramic", story: "Detailed, then ceramic coated for a deep gloss.", reel: "https://www.instagram.com/reel/De1UfTSkUh_/" },
+      { id: "bmw-x3-ceramic", car: "BMW X3", service: "Detailing + ceramic", story: "We detailed it, then ceramic coated it for a deep gloss.", reel: "https://www.instagram.com/reel/De1UfTSkUh_/" },
     ],
   },
 
   why: {
     title: "One studio. The whole job.",
     rows: [
-      { label: "Paint + protect", title: "Fixed first, then protected.", text: "Dents, chips and faded panels are put right before any film or coating goes on. One team, one place, no running between a body shop and a detailer." },
-      { label: "On the floor", title: "The owner works the job.", text: "Not from behind a desk. From colour matching to the final finish, every car is checked by him personally." },
+      { label: "Paint + protect", title: "We fix it first, then protect it.", text: "We put dents, chips and faded panels right before any film or coating goes on. One team, one place. You don't run between a body shop and a detailer." },
+      { label: "On the floor", title: "The owner works the job.", text: "He's on the floor, not behind a desk. He checks every car himself, from colour matching to the final finish." },
       // TODO(client): define what "lifetime" covers before the site goes public
       { label: "Warranty", title: "Lifetime, on PPF and paint.", text: "It's written under our logo. Ask us for the full terms for your job before you book." },
       { label: "Cars", title: "Luxury cars are routine here.", text: "Mercedes-Benz, Maybach, BMW, Porsche, Toyota, Range Rover, MG, Audi." },
@@ -249,7 +249,7 @@ export const site = {
   },
 
   proof: {
-    title: "Every job goes on camera.",
+    title: "We film the work.",
     quote: "I got premium PPF on my MG Majestor from Paint It Right. Impressive craftsmanship on the PPF installation. Finish looks premium.",
     cite: "MG Majestor owner, on camera",
     video: { id: "B3-puSiGIO8", title: "MG Majestor PPF: customer review", duration: "0:58" },
@@ -278,7 +278,7 @@ export const site = {
     items: [
       {
         q: "PPF or ceramic coating: which does my car need?",
-        a: "PPF is a clear film that physically takes stone chips and scratches. Ceramic is a hard, glossy coating that makes dust and water slide off and washing easier, but it won't stop a chip. Many owners put PPF on the front and ceramic over the rest. Tell us how and where you drive and we'll suggest the right mix.",
+        a: "PPF is a clear film that takes stone chips and scratches for your paint. Ceramic is a hard, glossy coating: dust and water slide off and washing gets easier, but it won't stop a chip. Many owners put PPF on the front and ceramic over the rest. Tell us how and where you drive and we'll suggest the mix.",
       },
       {
         // TODO(client): add the film and coating brands they use and the rated years
@@ -292,20 +292,20 @@ export const site = {
       },
       {
         q: "How do I look after it afterwards?",
-        a: "Leave new film or coating alone for the first few days; we'll tell you the exact wait for your product. After that, hand wash rather than brush car washes, keep a pressure washer away from film edges, and wipe off bird droppings quickly, especially in summer.",
+        a: "Leave new film or coating alone for the first few days; we'll tell you the exact wait for your product. After that, hand wash rather than using brush car washes, keep a pressure washer away from film edges, and wipe off bird droppings the same day. Summer heat bakes them in.",
       },
       {
         // TODO(client): coverage, conditions, transferability
         q: "What does the lifetime warranty cover?",
-        a: "Our lifetime warranty covers PPF and paintwork. Ask us for the full terms for your car and your job before you book, so you know exactly what's included.",
+        a: "Our lifetime warranty covers PPF and paintwork. Ask us for the full terms for your car and your job before you book, so you know what's included.",
       },
       {
         q: "Can you match my car's paint exactly?",
-        a: "Colour matching on every repaint is checked by the owner, from the first mix to the final coat. Metallic and pearl finishes take extra care, and we'll talk you through yours when we see the car.",
+        a: "The owner checks the colour match on every repaint, from the first mix to the final coat. Metallic and pearl finishes take extra care; we'll talk you through yours when we see the car.",
       },
       {
         q: "Can scratches be fixed without a respray?",
-        a: "Often, yes. Light scratches and swirls usually polish out of the clear coat. Deeper ones that reach the colour coat may need a touch-up or a panel respray. We'll tell you which after a look.",
+        a: "Light scratches and swirls polish out of the clear coat. Deeper ones that reach the colour coat may need a touch-up or a panel respray. We'll tell you which after a look.",
       },
     ],
   },

@@ -17,7 +17,7 @@ export function Process() {
       <div className="process-pin wrap mt-12 lg:mt-16">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-10">
           <div className="order-2 lg:order-1 lg:col-span-5">
-            <div className="process-meta mb-8 hidden items-center gap-5" aria-hidden="true">
+            <div className="process-meta mb-8 items-center gap-5" aria-hidden="true">
               <span className="num text-display-l font-extrabold leading-none text-signal">
                 <span className="odo">
                   <span className="odo-col" data-p="odo">

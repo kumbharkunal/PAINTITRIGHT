@@ -11,7 +11,9 @@
     "qa:review": "node scripts/qa-review.mjs",
     "qa:paint": "node scripts/qa-paint.mjs",
     "placeholders": "node scripts/make-placeholders.mjs",
-    "thumbs": "node scripts/fetch-yt-thumbs.mjs"
+    "thumbs": "node scripts/fetch-yt-thumbs.mjs",
+    "images:fit": "node scripts/fit-images.mjs",
+    "perf": "node scripts/perf.mjs"
   },
   "dependencies": {
     "@gsap/react": "2.1.2",
