@@ -28,14 +28,16 @@
 - [x] **8. Mobile pass:** 320–430 px, safe areas, 44 px targets, zero overflow
 - [x] **9. Polish:** impeccable, taste checklist, review-animations, stop-slop, dash and link scans
 - [x] **10. QA:** Playwright matrix (Chromium + WebKit), Lighthouse, reduced motion, keyboard, menu ×20, then a juror round
-- [ ] **11. Ship:** GitHub push, Vercel project `paintitright`, production checks, final report
+- [x] **11. Ship:** live at https://paintitright.vercel.app (Vercel project `paintitright`, team kunals-projects-a6e41378, CLI deploys). Repo pushed to github.com/kumbharkunal/PAINTITRIGHT.
+  - **Still open:** grant the Vercel GitHub app access to the repo, then run `vercel git connect https://github.com/kumbharkunal/PAINTITRIGHT.git` for auto-deploys.
 
-## Results so far (local production build)
+## Results (production, 12 Nov 2026)
 
-- **Lighthouse mobile:** Performance 100, Accessibility 100, Best Practices 96 (before the object-cover fix), SEO 66 (blocked by the intended noindex). LCP 1.2 s, TBT 70 ms, CLS 0.
-- **Lighthouse desktop:** 100 / 100 / 100 / 66. LCP 0.3 s, TBT 0 ms.
-- **Playwright:** the full suite passes in Chromium and WebKit. Tab-to-link tests are skipped in WebKit (Safari default).
-- **WebKit caveat:** Playwright's Windows WebKit build draws variable fonts at their default master, so typography in WebKit screenshots is not representative. Real Safari is fine.
+- **Lighthouse mobile** (median of 3): Performance 98, Accessibility 100, Best Practices 100, SEO 66 (blocked only by the intended noindex). LCP 1.3 s, TBT 40 ms, CLS 0.
+- **Lighthouse desktop:** 100 / 100 / 100 / 66. LCP 0.5 s, TBT 0 ms, CLS 0.
+- **Initial JS:** 209 KB compressed (9 files). GSAP + Lenis (~55 KB) and Motion layout features load on first interaction.
+- **Playwright:** 39 pass, 3 skipped (WebKit Tab-to-link x2 is Safari default; axe runs once in Chromium). Covers 7 sizes x 2 engines, menu x20, keyboard, reduced motion, 320 px, tap targets, offer expiry, link checks.
+- **WebKit caveat:** Playwright's Windows WebKit draws variable fonts at their default master, so typography in WebKit shots is not representative. Real Safari renders correctly.
 
 ## Decisions log
 
@@ -46,6 +48,8 @@
 - **Address:** 130, Hog Market, Rajendra Place, New Delhi 110008. The map links by coordinates (28.6446717, 77.1772307), never to the "Elite auto hub" listing.
 - **Facebook exists** (profile.php?id=61593747489164), so it's shown.
 - **No Google reviews.** Proof uses the one on-camera MG Majestor testimonial; `flags.reviews = false`.
+- **Reveals fire from IntersectionObserver** (cannot stay hidden after layout shifts). ScrollTrigger is used only for scrub/pin. content-visibility was tried and reverted, because it hid reduced-motion content in WebKit.
+- **Images:** plain <img> via getImageProps (no next/image hydration). The overspray band is CSS gradients (it had become the LCP candidate).
 - **Runtime loads on first interaction** (scroll, pointer, touch, key) or after 7 s. This took mobile TBT from 590 ms to 70 ms.
 - **Each section in its own Suspense boundary** so hydration runs in small tasks.
 - **Hubot Sans barred zero:** numerals in display or label text use Mona Sans (`.num`).
