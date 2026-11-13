@@ -253,8 +253,12 @@ export function Nav() {
             else loadMotionFeatures().then(() => requestAnimationFrame(() => setOpen(true)));
           }}
         >
-          <i />
-          <i />
+          <span aria-hidden="true">{open ? "Close" : "Menu"}</span>
+          <span className="menu-bars" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </span>
         </button>
       </div>
 

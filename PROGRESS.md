@@ -44,8 +44,27 @@
 - **All 14 AI images are in** (hero x2, before/after, craft, 9 services).
   - The before/after pair was resized 1254 to 1024 and checked for alignment (blend/diff: edges coincide).
   - No badges or text found.
-- **Still placeholders:** the 6 Work stills, which come from the client.
+- **Work stills:** the client has no photos, and their Instagram is all video. Each Work tile now uses its job's YouTube Short cover, cropped to 4:5 (`npm run thumbs`). Real photos replace them at the same paths (see `IMAGE_PROMPTS.md`).
 - **Before/after keeps the "Illustration" tag** until a real client pair replaces it.
+
+## Feedback round (14 Nov 2026)
+
+Kunal's notes, and what changed:
+- **"Watch the work" and (phone) "Recent work" wouldn't scroll.** Cause: `data-lenis-prevent` on both rails. With Lenis's `overscroll-behavior: contain`, it swallowed every vertical swipe or wheel that started on a rail. Removed it, so the rails are plain native scroll-snap lists.
+  - **Desktop Videos** is now one staggered six-column row (no sideways scrolling, nothing hidden off-screen).
+  - **Regression test:** `tests/scroll.spec.ts` covers a phone swipe on both rails (the page scrolls, and the rail still swipes sideways) and the desktop wheel over the videos row.
+- **The menu icon didn't read as a menu.** The pill now says "Menu" beside a classic three-bar icon (short red bottom bar). Open, it says "Close" and the bars fold into an ×.
+- **Recent Work images:** the client gives none and their Instagram is all video, so the tiles use real frames from their own Shorts. The jobs were regrouped:
+  - Work: GLC, M2, X3, Z4, Camry, S-Class (car shots).
+  - Videos: the X7 and Macan talk-throughs, Land Cruiser, colour matching, Vellfire, Maybach.
+- **Cursor:** the follower disc ("Play"/"View"/"Drag") is gone. The cursor is the normal arrow and hand, in signal red with a white outline, on mouse and trackpad only.
+- **Also fixed on the way**
+  - **Slashed zeros:** numbers showed a code-style slashed zero, because Mona Sans's tabular figures use one. Numbers now use its default lining figures.
+  - **No-JS:** every section after the hero stayed hidden, because React streams each Suspense boundary and reveals it with an inline script. A `<noscript>` style now shows them in order, with the footer last. Layout is identical with and without JS.
+- **Results (local production build)**
+  - **Lighthouse mobile:** 100 / 100 / 100 / 66 (noindex). LCP 1.1 s, TBT 30 ms, CLS 0.
+  - **Lighthouse desktop:** 100 / 100 / 100 / 66.
+  - **Playwright:** 42 pass, 4 skipped.
 
 ## Decisions log
 
@@ -59,8 +78,9 @@
 - **Reveals fire from IntersectionObserver** (cannot stay hidden after layout shifts). ScrollTrigger is used only for scrub/pin. content-visibility was tried and reverted, because it hid reduced-motion content in WebKit.
 - **Images:** plain <img> via getImageProps (no next/image hydration). The overspray band is CSS gradients (it had become the LCP candidate).
 - **Runtime loads on first interaction** (scroll, pointer, touch, key) or after 7 s. This took mobile TBT from 590 ms to 70 ms.
-- **Each section in its own Suspense boundary** so hydration runs in small tasks.
-- **Hubot Sans barred zero:** numerals in display or label text use Mona Sans (`.num`).
+- **Each section in its own Suspense boundary** so hydration runs in small tasks. React reveals the streamed sections with inline scripts on the first frame; the `<noscript>` style in `layout.tsx` covers visitors without JS.
+- **Hubot Sans barred zero:** numerals in display or label text use Mona Sans (`.num`), with lining figures. Never `tabular-nums`: Mona's tabular set has a slashed zero.
+- **Rails never get `data-lenis-prevent`:** it blocks vertical scrolling that starts on them.
 - **No paint booth claims** in copy or AI image prompts (painting happens in an open yard).
 
 ## Open TODO(client)

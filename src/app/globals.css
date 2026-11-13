@@ -84,7 +84,8 @@ body {
 :focus-visible { outline: 2px solid var(--color-paper); outline-offset: 3px; border-radius: 6px; }
 [tabindex="-1"]:focus { outline: none; }
 img, svg, video { display: block; }
-.tabular { font-variant-numeric: tabular-nums; }
+/* Mona Sans's tabular figures are a code-style set with a slashed zero, so numbers use its default lining figures. */
+.tabular { font-variant-numeric: lining-nums proportional-nums; }
 
 /* Lenis (smooth wheel on desktop; touch stays native) */
 html.lenis, html.lenis body { height: auto; }
@@ -118,7 +119,7 @@ html.is-locked, html.is-locked body { overflow: hidden; }
 .hero-title { font-size: clamp(2.6rem, 0.9rem + 5.95vw, 8rem); line-height: 0.88; }
 .nowrap { white-space: nowrap; }
 /* Hubot Sans draws a barred zero; numbers inside display/label text use Mona Sans */
-.num { font-family: var(--font-sans); font-stretch: 100%; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; }
+.num { font-family: var(--font-sans); font-stretch: 100%; font-variant-numeric: lining-nums proportional-nums; letter-spacing: 0.02em; }
 
 /* masked lines (hero CSS, SplitText elsewhere) */
 .line-mask { display: block; overflow-x: visible; overflow-y: clip; padding-bottom: 0.1em; margin-bottom: -0.1em; }
@@ -221,12 +222,25 @@ html.is-locked, html.is-locked body { overflow: hidden; }
   .nav[data-compact="true"] .nav-bg { clip-path: inset(0 calc(var(--wm-w) / 2) 0 calc(var(--wm-w) / 2) round 999px); }
 }
 
-.menu-btn { position: relative; width: 44px; height: 44px; border-radius: 999px; display: grid; place-items: center; -webkit-tap-highlight-color: transparent; }
-.menu-btn i { position: absolute; width: 3px; height: 18px; border-radius: 1px; background: var(--color-paper); transition: transform 0.36s var(--ease-set), background-color 0.2s; }
-.menu-btn i:first-child { background: var(--color-signal); transform: translateX(-4px) skewX(var(--slash)); }
-.menu-btn i:last-child { transform: translateX(4px) skewX(var(--slash)); }
-.menu-btn[aria-expanded="true"] i:first-child { transform: rotate(45deg); background: var(--color-paper); }
-.menu-btn[aria-expanded="true"] i:last-child { transform: rotate(-45deg); }
+/* menu button: a "Menu" label and two bars (the classic hamburger, trimmed to two lines);
+   the bars turn into × when open */
+.menu-btn {
+  position: relative; height: 44px; padding: 0 16px 0 18px; border-radius: 999px; display: inline-flex; align-items: center; gap: 12px;
+  background: rgb(255 255 255 / 0.08); border: 1px solid rgb(255 255 255 / 0.12); color: var(--color-paper);
+  font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em; -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+  transition: background-color 0.18s var(--ease-set), transform 0.12s var(--ease-set);
+}
+.menu-btn:active { transform: scale(0.97); }
+/* Classic three-bar menu icon (short red bottom bar) that folds into an x.
+   Each bar keeps the same transform function list in both states, so the morph interpolates cleanly. */
+.menu-bars { position: relative; width: 20px; height: 14px; flex: none; }
+.menu-bars i { position: absolute; left: 0; width: 20px; height: 2px; border-radius: 2px; background: var(--color-paper); transform-origin: 50% 50%; transition: transform 0.36s var(--ease-set), opacity 0.2s, background-color 0.2s; }
+.menu-bars i:nth-child(1) { top: 0; transform: translate(0, 0) rotate(0deg); }
+.menu-bars i:nth-child(2) { top: 6px; }
+.menu-bars i:nth-child(3) { top: 12px; background: var(--color-signal); transform: translate(-3.5px, 0) rotate(0deg) scaleX(0.65); }
+.menu-btn[aria-expanded="true"] .menu-bars i:nth-child(1) { transform: translate(0, 6px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] .menu-bars i:nth-child(2) { transform: scaleX(0.2); opacity: 0; }
+.menu-btn[aria-expanded="true"] .menu-bars i:nth-child(3) { transform: translate(0, -6px) rotate(-45deg) scaleX(1); background: var(--color-paper); }
 
 .sheet {
   position: fixed; z-index: 1; top: calc(env(safe-area-inset-top) + 12px); left: 12px; right: 12px;
@@ -374,9 +388,10 @@ html.is-locked, html.is-locked body { overflow: hidden; }
 /* ───────────────────────── Video facade ───────────────────────── */
 .facade { position: relative; display: block; width: 100%; aspect-ratio: 9 / 16; overflow: hidden; background: var(--color-graphite); border-radius: 0; }
 .facade img, .facade iframe { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border: 0; }
-.facade-shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgb(8 9 11 / 0.9) 0%, rgb(8 9 11 / 0.15) 45%, rgb(8 9 11 / 0) 60%); }
+.facade-btn { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.facade-shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgb(8 9 11 / 0.55) 0%, rgb(8 9 11 / 0) 35%); }
 .play { position: absolute; left: 14px; bottom: 14px; width: 48px; height: 48px; border-radius: 999px; background: var(--color-signal); display: grid; place-items: center; transition: transform 0.24s var(--ease-set); }
-.facade:hover .play, .facade:focus-visible .play { transform: scale(1.08); }
+.facade-btn:hover .play, .facade-btn:focus-visible .play { transform: scale(1.08); }
 
 /* ───────────────────────── FAQ ───────────────────────── */
 .faq-q { width: 100%; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding: 22px 0; text-align: left; min-height: 44px; }
@@ -412,14 +427,12 @@ html.is-locked, html.is-locked body { overflow: hidden; }
 .fab[data-show="false"] { transform: translateY(18px) scale(0.9); opacity: 0; pointer-events: none; }
 html[data-menu="open"] .fab { opacity: 0; pointer-events: none; }
 
-/* ───────────────────────── Cursor (fine pointers, added by the runtime) ───────────────────────── */
-.cursor { position: fixed; left: 0; top: 0; z-index: 80; pointer-events: none; width: 0; height: 0; }
-.cursor-ring { position: absolute; left: -6px; top: -6px; width: 12px; height: 12px; border-radius: 999px; border: 1.5px solid rgb(237 235 231 / 0.7);
-  display: grid; place-items: center; transition: transform 0.32s var(--ease-set), background-color 0.2s, border-color 0.2s; }
-.cursor-label { font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-booth); opacity: 0; transition: opacity 0.2s; transform: scale(0.18); }
-.cursor[data-label] .cursor-ring { transform: scale(5.5); background: var(--color-paper); border-color: transparent; }
-.cursor[data-label] .cursor-label { opacity: 1; }
-.cursor[data-hide="true"] { opacity: 0; }
+/* ───────────────────────── Cursor: the normal arrow and hand, in signal red ───────────────────────── */
+@media (hover: hover) and (pointer: fine) {
+  html { cursor: url("/cursors/arrow.svg") 4 2, auto; }
+  a[href], button:not(:disabled), [role="slider"], label, summary { cursor: url("/cursors/pointer.svg") 10 2, pointer; }
+  .compare { cursor: ew-resize; }
+}
 
 }
 

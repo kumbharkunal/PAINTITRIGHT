@@ -48,7 +48,7 @@ Rules:
 - **Width by breakpoint:** 125 (Expanded) at ≥1024 px, 112 at ≥640 px, 100 below, so nothing overflows at 320 px.
 - **Emphasis:** one red word per headline leans at the slash angle via `skewX`. That echoes the client's red italic word with no italic file.
 
-**Body: Mona Sans** (OFL), wght 400–600 at wdth 100. `font-variant-numeric: tabular-nums` for phones, hours and counters.
+**Body: Mona Sans** (OFL), wght 400–600 at wdth 100. Numbers (phones, hours, durations, counters) use its default lining figures through `.num` / `.tabular`. Mona's tabular set is a code-style design with a slashed zero, so it is never switched on, and Hubot's barred zero is kept out of numerals the same way.
 
 **Labels:** Hubot 600, wdth 125, 12 px uppercase, +0.08em. Functional only (service groups, step counter, plate rows). Never decorative eyebrows above headings.
 
@@ -84,7 +84,6 @@ Rules:
 - hairline divider breaks;
 - the end of the hero pass (the "loader");
 - the nav active state;
-- the mobile menu icon (two slashes rotating into ×);
 - the progress line's leading edge;
 - link hovers;
 - Process ticks;
@@ -138,6 +137,9 @@ Rules:
 - **Primary button:** red pill, white Mona 600 label, WhatsApp disc. Hover shifts the disc. Press is `scale(.97)` over 120 ms. Magnetic on fine pointers. Min 44 px tall.
 - **Secondary button:** a `line-strong` outline, paper text. Hover adds a `graphite-2` fill.
 - **Links:** the underline draws with `scaleX` from the left and leaves to the right.
+- **Menu button (phones and tablets):** a glass pill reading "Menu" beside a classic three-bar icon, the short bottom bar in red. Open, it reads "Close" and the bars fold into an ×. Recognisable first, branded second: real visitors read the slash-pair icon this replaced as decoration.
+- **Cursor:** the system arrow and hand, redrawn in signal red with a white outline (`public/cursors/`), on fine pointers only. No follower or labelled disc.
+- **Rails** (Work and Videos on phones and tablets) are native `overflow-x` scroll-snap lists. They never take `data-lenis-prevent`, because that blocks vertical scrolling for a swipe or wheel that starts on them.
 - **Focus:** a 2 px paper outline with 3 px offset, always visible on keyboard focus.
 - **Tap targets:** ≥ 44 px. Safe-area insets respected. Zero horizontal overflow at 320 px.
 
@@ -147,7 +149,7 @@ Rules:
 - Asymmetric 12-column compositions.
 - One idea per section.
 - Their real cars and words.
-- Tabular numbers.
+- Plain lining numbers (no slashed or barred zeros).
 - The slash angle everywhere a diagonal appears.
 
 **Don't**

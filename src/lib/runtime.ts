@@ -61,7 +61,7 @@ export function startRuntime() {
   );
   undo.push(() => mm.revert());
 
-  if (fine && !reduce) undo.push(cursor(), magnetic());
+  if (fine && !reduce) undo.push(magnetic());
   if (!CSS.supports("animation-timeline: scroll()")) undo.push(progressFallback());
 
   // keep trigger positions honest: fonts, late images, accordions
@@ -309,42 +309,6 @@ function pinDrop() {
   const pin = document.querySelector("[data-pin] .map-pin-body");
   if (!pin || inView(pin)) return;
   gsap.from(pin, { y: -36, opacity: 0, duration: 0.7, ease: "set", scrollTrigger: { trigger: pin, start: "top 80%", once: true } });
-}
-
-// ───────────────────────── cursor follower (fine pointers only) ─────────────────────────
-function cursor() {
-  const el = document.createElement("div");
-  el.className = "cursor";
-  el.setAttribute("aria-hidden", "true");
-  el.innerHTML = '<div class="cursor-ring"><span class="cursor-label"></span></div>';
-  document.body.appendChild(el);
-  const label = el.querySelector<HTMLElement>(".cursor-label")!;
-  const xTo = gsap.quickTo(el, "x", { duration: 0.35, ease: "power3" });
-  const yTo = gsap.quickTo(el, "y", { duration: 0.35, ease: "power3" });
-  const move = (e: PointerEvent) => {
-    if (e.pointerType !== "mouse") return;
-    el.dataset.hide = "false";
-    xTo(e.clientX);
-    yTo(e.clientY);
-  };
-  const over = (e: PointerEvent) => {
-    const t = (e.target as Element | null)?.closest?.("[data-cursor]");
-    const text = t?.getAttribute("data-cursor");
-    if (text) {
-      el.dataset.label = text;
-      label.textContent = text;
-    } else delete el.dataset.label;
-  };
-  const leave = () => (el.dataset.hide = "true");
-  window.addEventListener("pointermove", move, { passive: true });
-  document.addEventListener("pointerover", over, { passive: true });
-  document.documentElement.addEventListener("pointerleave", leave);
-  return () => {
-    window.removeEventListener("pointermove", move);
-    document.removeEventListener("pointerover", over);
-    document.documentElement.removeEventListener("pointerleave", leave);
-    el.remove();
-  };
 }
 
 // ───────────────────────── magnetic CTAs (fine pointers only) ─────────────────────────

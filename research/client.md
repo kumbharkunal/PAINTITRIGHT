@@ -167,8 +167,8 @@ URL: instagram.com/reel/CODE/ (or /p/CODE/ for images). Plays are shown as total
 
 | Section | Jobs |
 |---|---|
-| Work (stills + reel links) | X7 bumper (DeY2FqdjMGf), Macan piano black (DeS6JKIAQ-n), Z4 restoration (DfB_eteih-I), S-Class repaint + PPF (DceUAMwTnCT), GLC 300 PPF (DfJ4iTFAtJT), X3 ceramic (De1UfTSkUh_) |
-| Videos (YT Shorts facades) | Land Cruiser (iMEVdAhjchc), Camry (kC4jSSr15SU), colour matching (KV0DNZ7rh3E), M2 3M ceramic (Cn9_caqHqCw), Vellfire PPF (6i_bBG_otTk), Maybach delivery (0NwTGu8gfBo) |
+| Work (4:5 frames from each job's YT Short + IG reel links; real photos replace them later) | GLC 300 PPF (DfJ4iTFAtJT · TrHiT4jSC8s), M2 3M ceramic (Dc8C-aZDhQW · Cn9_caqHqCw), X3 ceramic (De1UfTSkUh_ · __oZhrku4_Q), Z4 restoration (DfB_eteih-I · hKQGvxMT93I), Camry restoration + ceramic (DdEPkECDD0b · kC4jSSr15SU), S-Class repaint + PPF (DceUAMwTnCT · gDn7yzwWAeI) |
+| Videos (YT Shorts facades) | X7 bumper (Akfa4KmWeaU), Land Cruiser (iMEVdAhjchc), colour matching (KV0DNZ7rh3E), Macan piano black (PZdKZimD0Jo), Vellfire PPF (6i_bBG_otTk), Maybach delivery (0NwTGu8gfBo) |
 | Proof | MG Majestor customer review (B3-puSiGIO8) |
 
 ## Open questions for the client

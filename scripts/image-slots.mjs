@@ -17,12 +17,13 @@ export const SLOTS = [
     "interior-detailing",
     "interior-plastic-coating",
   ].map((slug, i) => ({ path: `public/images/services/${slug}.png`, w: 1024, h: 1536, kind: "studio", seed: 30 + i })),
+  // Work: 4:5 frames from their Shorts (scripts/fetch-yt-thumbs.mjs) until real photos arrive
   ...[
-    "bmw-x7-bumper",
-    "porsche-macan-piano-black",
-    "bmw-z4-restoration",
-    "mercedes-s-class-repaint-ppf",
     "mercedes-glc-ppf",
+    "bmw-m2-ceramic",
     "bmw-x3-ceramic",
-  ].map((slug, i) => ({ path: `public/images/work/${slug}.jpg`, w: 1280, h: 1600, kind: "studio", seed: 50 + i })),
+    "bmw-z4-restoration",
+    "toyota-camry-restoration",
+    "mercedes-s-class-repaint-ppf",
+  ].map((slug, i) => ({ path: `public/images/work/${slug}.jpg`, w: 1080, h: 1350, kind: "studio", seed: 50 + i })),
 ];

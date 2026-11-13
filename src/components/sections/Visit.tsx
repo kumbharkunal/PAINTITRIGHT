@@ -70,7 +70,7 @@ export function Visit() {
         </div>
 
         <div className="lg:col-span-7">
-          <a href={site.address.mapsUrl} target="_blank" rel="noopener noreferrer" className="map notch group" data-reveal="clip" data-cursor="Open" aria-label="Open the studio location in Google Maps">
+          <a href={site.address.mapsUrl} target="_blank" rel="noopener noreferrer" className="map notch group" data-reveal="clip" aria-label="Open the studio location in Google Maps">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/map/visit.svg" alt="" width={1200} height={900} loading="lazy" decoding="async" />
             {MAP.labels.map((l) => (

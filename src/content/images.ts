@@ -17,18 +17,18 @@ import detailingPolishing from "../../public/images/services/detailing-polishing
 import interiorDetailing from "../../public/images/services/interior-detailing.png";
 import interiorPlasticCoating from "../../public/images/services/interior-plastic-coating.png";
 
-import bmwX7Bumper from "../../public/images/work/bmw-x7-bumper.jpg";
-import porscheMacan from "../../public/images/work/porsche-macan-piano-black.jpg";
-import bmwZ4 from "../../public/images/work/bmw-z4-restoration.jpg";
-import sClass from "../../public/images/work/mercedes-s-class-repaint-ppf.jpg";
 import glc from "../../public/images/work/mercedes-glc-ppf.jpg";
+import bmwM2 from "../../public/images/work/bmw-m2-ceramic.jpg";
 import bmwX3 from "../../public/images/work/bmw-x3-ceramic.jpg";
+import bmwZ4 from "../../public/images/work/bmw-z4-restoration.jpg";
+import camry from "../../public/images/work/toyota-camry-restoration.jpg";
+import sClass from "../../public/images/work/mercedes-s-class-repaint-ppf.jpg";
 
 import vB3 from "../../public/images/videos/B3-puSiGIO8.jpg";
+import vAK from "../../public/images/videos/Akfa4KmWeaU.jpg";
+import vPZ from "../../public/images/videos/PZdKZimD0Jo.jpg";
 import vIM from "../../public/images/videos/iMEVdAhjchc.jpg";
-import vKC from "../../public/images/videos/kC4jSSr15SU.jpg";
 import vKV from "../../public/images/videos/KV0DNZ7rh3E.jpg";
-import vCN from "../../public/images/videos/Cn9_caqHqCw.jpg";
 import v6I from "../../public/images/videos/6i_bBG_otTk.jpg";
 import v0N from "../../public/images/videos/0NwTGu8gfBo.jpg";
 
@@ -50,19 +50,19 @@ export const IMG = {
     "interior-plastic-coating": interiorPlasticCoating,
   },
   work: {
-    "bmw-x7-bumper": bmwX7Bumper,
-    "porsche-macan-piano-black": porscheMacan,
-    "bmw-z4-restoration": bmwZ4,
-    "mercedes-s-class-repaint-ppf": sClass,
     "mercedes-glc-ppf": glc,
+    "bmw-m2-ceramic": bmwM2,
     "bmw-x3-ceramic": bmwX3,
+    "bmw-z4-restoration": bmwZ4,
+    "toyota-camry-restoration": camry,
+    "mercedes-s-class-repaint-ppf": sClass,
   },
   videos: {
     "B3-puSiGIO8": vB3,
+    Akfa4KmWeaU: vAK,
+    PZdKZimD0Jo: vPZ,
     iMEVdAhjchc: vIM,
-    kC4jSSr15SU: vKC,
     KV0DNZ7rh3E: vKV,
-    Cn9_caqHqCw: vCN,
     "6i_bBG_otTk": v6I,
     "0NwTGu8gfBo": v0N,
   },

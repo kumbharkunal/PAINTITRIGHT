@@ -39,11 +39,18 @@ export const viewport: Viewport = {
 // reduced motion and no-JS get none. Sets an attribute only; the hero animates in CSS.
 const INTRO = `try{var d=document.documentElement;if(!matchMedia('(prefers-reduced-motion: reduce)').matches){var k='pir-intro';d.dataset.intro=localStorage.getItem(k)?'repeat':'first';localStorage.setItem(k,'1')}}catch(e){}`;
 
+// Each section streams as its own Suspense boundary, and React's inline scripts move it into
+// place on the first frame. Without JS those scripts never run, so the sections would stay
+// hidden after the footer: show them, in order, and put the footer back at the end.
+// (Same layer as Tailwind's preflight `[hidden]{display:none!important}`, higher specificity.)
+const NOSCRIPT = `<style>@layer theme,base,components,utilities;@layer base{body{display:flex;flex-direction:column}body>div[hidden][id^="S:"]{display:block!important}body>footer{order:1}}</style>`;
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-IN" className={`${hubot.variable} ${mona.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: INTRO }} />
+        <noscript dangerouslySetInnerHTML={{ __html: NOSCRIPT }} />
       </head>
       <body>
         <a href="#main" className="skip-link">

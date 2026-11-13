@@ -227,12 +227,13 @@ export const site = {
     title: "Recent work.",
     intro: "Real cars from the studio. Tap a job to watch the reel.",
     items: [
-      { id: "bmw-x7-bumper", car: "BMW X7", service: "Bumper restoration", story: "Cracked bumper. We restored it instead of replacing it.", reel: "https://www.instagram.com/reel/DeY2FqdjMGf/" },
-      { id: "porsche-macan-piano-black", car: "Porsche Macan", service: "Piano black finish", story: "Dull plastic cladding, now gloss piano black.", reel: "https://www.instagram.com/reel/DeS6JKIAQ-n/" },
-      { id: "bmw-z4-restoration", car: "BMW Z4", service: "Repaint & restoration", story: "Smashed front and rear. We repainted it and brought it back.", reel: "https://www.instagram.com/reel/DfB_eteih-I/" },
-      { id: "mercedes-s-class-repaint-ppf", car: "Mercedes S-Class", service: "Repaint + PPF", story: "The repaint brought the look back. PPF locks it in.", reel: "https://www.instagram.com/reel/DceUAMwTnCT/" },
+      // Frames from their own Shorts until real photos arrive (all their work is on video).
       { id: "mercedes-glc-ppf", car: "Mercedes GLC 300", service: "Paint protection film", story: "Clear film over the original paint.", reel: "https://www.instagram.com/reel/DfJ4iTFAtJT/" },
+      { id: "bmw-m2-ceramic", car: "BMW M2", service: "3M ceramic coating", story: "Red paint, carbon roof, finished with 3M ceramic.", reel: "https://www.instagram.com/reel/Dc8C-aZDhQW/" },
       { id: "bmw-x3-ceramic", car: "BMW X3", service: "Detailing + ceramic", story: "We detailed it, then ceramic coated it for a deep gloss.", reel: "https://www.instagram.com/reel/De1UfTSkUh_/" },
+      { id: "bmw-z4-restoration", car: "BMW Z4", service: "Repaint & restoration", story: "Smashed front and rear. We repainted it and brought it back.", reel: "https://www.instagram.com/reel/DfB_eteih-I/" },
+      { id: "toyota-camry-restoration", car: "Toyota Camry", service: "Restoration + ceramic", story: "We repaired the damage, then ceramic coated it for gloss.", reel: "https://www.instagram.com/reel/DdEPkECDD0b/" },
+      { id: "mercedes-s-class-repaint-ppf", car: "Mercedes S-Class", service: "Repaint + PPF", story: "The repaint brought the look back. PPF locks it in.", reel: "https://www.instagram.com/reel/DceUAMwTnCT/" },
     ],
   },
 
@@ -264,10 +265,10 @@ export const site = {
     title: "Watch the work.",
     intro: "Short videos from the studio and the yard.",
     items: [
+      { id: "Akfa4KmWeaU", title: "BMW X7: bumper restored instead of replaced", duration: "0:41" },
       { id: "iMEVdAhjchc", title: "Toyota Land Cruiser: full repaint", duration: "0:30" },
-      { id: "kC4jSSr15SU", title: "Toyota Camry: damage to gloss", duration: "0:40" },
       { id: "KV0DNZ7rh3E", title: "Colour matching, checked by the owner", duration: "0:43" },
-      { id: "Cn9_caqHqCw", title: "BMW M2: 3M ceramic coating", duration: "0:32" },
+      { id: "PZdKZimD0Jo", title: "Porsche Macan: piano black cladding", duration: "0:30" },
       { id: "6i_bBG_otTk", title: "Toyota Vellfire: PPF", duration: "0:45" },
       { id: "0NwTGu8gfBo", title: "Mercedes-Maybach: delivery day", duration: "0:52" },
     ],

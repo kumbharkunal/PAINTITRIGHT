@@ -4,6 +4,8 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { SocialLogo } from "@/components/ui/SocialLogo";
 import { VideoFacade } from "@/components/ui/VideoFacade";
 
+// Phones and tablets: a native swipe rail (vertical swipes still scroll the page).
+// Desktop: all six Shorts in one staggered row, so nothing hides off-screen.
 export function Videos() {
   const v = site.videos;
   return (
@@ -20,14 +22,19 @@ export function Videos() {
           {site.socials.youtube.handle}
         </a>
       </div>
-      <div className="rail mt-10 lg:mt-14 lg:[--rail-pad:var(--gutter)]" data-lenis-prevent tabIndex={0} aria-label="Videos, scroll sideways" data-reveal="rail">
+      <ul
+        className="rail mt-10 lg:mx-auto lg:mt-14 lg:grid lg:max-w-[1440px] lg:grid-cols-6 lg:gap-5 lg:overflow-visible lg:px-[var(--gutter)]"
+        role="list"
+        aria-label="Videos"
+        data-reveal="rail"
+      >
         {v.items.map((it, i) => (
-          <div key={it.id} className={i === 0 ? "w-[68vw] max-w-[360px] sm:w-[40vw] lg:w-[24vw]" : "w-[58vw] max-w-[300px] sm:w-[32vw] lg:w-[19vw] lg:pt-14"}>
-            <VideoFacade id={it.id} title={it.title} duration={it.duration} thumb={IMG.videos[it.id]} sizes="(min-width: 1024px) 24vw, 68vw" />
-          </div>
+          <li key={it.id} className={`w-[64vw] max-w-[300px] sm:w-[36vw] lg:w-auto lg:max-w-none ${i % 2 ? "lg:pt-16" : ""}`}>
+            <VideoFacade id={it.id} title={it.title} duration={it.duration} thumb={IMG.videos[it.id]} sizes="(min-width: 1024px) 15vw, 64vw" />
+          </li>
         ))}
-        <div className="w-px flex-none" aria-hidden="true" />
-      </div>
+        <li className="w-px flex-none lg:hidden" aria-hidden="true" />
+      </ul>
     </section>
   );
 }

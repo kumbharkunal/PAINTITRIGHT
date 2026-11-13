@@ -10,7 +10,7 @@ type Job = (typeof site.work.items)[number];
 
 function Tile({ job, sizes, className = "" }: { job: Job; sizes: string; className?: string }) {
   return (
-    <a href={job.reel} target="_blank" rel="noopener noreferrer" className={`tile ${className}`} data-cursor="View">
+    <a href={job.reel} target="_blank" rel="noopener noreferrer" className={`tile ${className}`}>
       <div className="tile-media notch">
         <Img src={IMG.work[job.id]} alt={`${job.car}: ${job.story}`} sizes={sizes} />
       </div>
@@ -64,12 +64,14 @@ export function Work() {
         </div>
       </div>
 
-      {/* mobile + tablet: native scroll-snap rail */}
-      <div className="rail mt-10 lg:hidden" data-lenis-prevent tabIndex={0} aria-label="Recent work, scroll sideways">
+      {/* mobile + tablet: native scroll-snap rail. role="list" because Safari drops list semantics under list-style: none */}
+      <ul className="rail mt-10 lg:hidden" role="list" aria-label="Recent work, swipe sideways">
         {w.items.map((job) => (
-          <Tile key={job.id} job={job} sizes="(max-width: 767px) 80vw, 45vw" className="w-[80vw] max-w-[420px] sm:w-[45vw]" />
+          <li key={job.id} className="w-[80vw] max-w-[420px] sm:w-[45vw]">
+            <Tile job={job} sizes="(max-width: 767px) 80vw, 45vw" />
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

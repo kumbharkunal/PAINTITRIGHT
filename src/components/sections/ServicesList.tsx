@@ -78,7 +78,7 @@ export function ServicesList({ items }: { items: Item[] }) {
       {/* Desktop: sticky frame with the diagonal pass between services */}
       <div className="hidden lg:col-span-5 lg:block">
         <div className="sticky top-28">
-          <div className="svc-frame notch" data-cursor="View">
+          <div className="svc-frame notch">
             {items.map((it, i) => (
               <div key={it.id} className="svc-layer" data-shown={stack.includes(i)} style={{ zIndex: stack.indexOf(i) + 1 }} aria-hidden={i !== active}>
                 {loaded.has(i) ? (

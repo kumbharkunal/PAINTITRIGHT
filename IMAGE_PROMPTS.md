@@ -158,19 +158,27 @@ Create a photorealistic close-up photograph in portrait format. A car dashboard 
 
 ## Real photos: get from the client or their Instagram
 
-The Work section shows six real jobs and links each one to its reel. For each, use a clean still of the finished car: a frame from the reel or an original photo, **not** the composite cover graphic.
+The Work section shows six real jobs and links each one to its reel.
+
+**Until real photos arrive:** the client has shared no photos, and every job on their Instagram is a video. So each tile uses the cover frame of the same job's YouTube Short, cropped to 4:5 (1080 × 1350) by `npm run thumbs` (`scripts/fetch-yt-thumbs.mjs`).
+
+**Real photos replace them at the same paths:**
+- Use a clean still of the finished car: an original photo or a frame from the reel, **not** a composite cover graphic.
 - **Size:** at least **1280 × 1600 px**, 4:5 portrait.
 - **Format:** JPG.
 - **Wrong size:** run `npm run images:fit` after dropping it in.
+- `npm run thumbs` never overwrites a file that already exists (only `--force` does).
 
-| Job | Save as | Reel |
-|---|---|---|
-| BMW X7, bumper restored | `public/images/work/bmw-x7-bumper.jpg` | instagram.com/reel/DeY2FqdjMGf |
-| Porsche Macan, piano black cladding | `public/images/work/porsche-macan-piano-black.jpg` | instagram.com/reel/DeS6JKIAQ-n |
-| BMW Z4, repaint & restoration | `public/images/work/bmw-z4-restoration.jpg` | instagram.com/reel/DfB_eteih-I |
-| Mercedes S-Class, repaint + PPF | `public/images/work/mercedes-s-class-repaint-ppf.jpg` | instagram.com/reel/DceUAMwTnCT |
-| Mercedes GLC 300, PPF | `public/images/work/mercedes-glc-ppf.jpg` | instagram.com/reel/DfJ4iTFAtJT |
-| BMW X3, detailing + ceramic | `public/images/work/bmw-x3-ceramic.jpg` | instagram.com/reel/De1UfTSkUh_ |
+| Job | Save as | Reel | Current frame from |
+|---|---|---|---|
+| Mercedes GLC 300, PPF | `public/images/work/mercedes-glc-ppf.jpg` | instagram.com/reel/DfJ4iTFAtJT | youtube.com/shorts/TrHiT4jSC8s |
+| BMW M2, 3M ceramic coating | `public/images/work/bmw-m2-ceramic.jpg` | instagram.com/reel/Dc8C-aZDhQW | youtube.com/shorts/Cn9_caqHqCw |
+| BMW X3, detailing + ceramic | `public/images/work/bmw-x3-ceramic.jpg` | instagram.com/reel/De1UfTSkUh_ | youtube.com/shorts/__oZhrku4_Q |
+| BMW Z4, repaint & restoration | `public/images/work/bmw-z4-restoration.jpg` | instagram.com/reel/DfB_eteih-I | youtube.com/shorts/hKQGvxMT93I (their "BEFORE" cover) |
+| Toyota Camry, restoration + ceramic | `public/images/work/toyota-camry-restoration.jpg` | instagram.com/reel/DdEPkECDD0b | youtube.com/shorts/kC4jSSr15SU |
+| Mercedes S-Class, repaint + PPF | `public/images/work/mercedes-s-class-repaint-ppf.jpg` | instagram.com/reel/DceUAMwTnCT | youtube.com/shorts/gDn7yzwWAeI |
+
+The BMW X7 bumper and Porsche Macan piano-black jobs moved to the Videos section, because their Shorts are the owner talking them through.
 
 **Also worth asking the client for**
 - **A real before/after pair** in the same framing (the Macan cladding or the X7 bumper are ideal). It replaces #3 and #4: save as `public/images/results/before.png` and `after.png`, then delete `tag` under `results` in `src/content/site.ts` so the "Illustration" label disappears.
