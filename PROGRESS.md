@@ -39,6 +39,14 @@
 - **Playwright:** 39 pass, 3 skipped (WebKit Tab-to-link x2 is Safari default; axe runs once in Chromium). Covers 7 sizes x 2 engines, menu x20, keyboard, reduced motion, 320 px, tap targets, offer expiry, link checks.
 - **WebKit caveat:** Playwright's Windows WebKit draws variable fonts at their default master, so typography in WebKit shots is not representative. Real Safari renders correctly.
 
+## Images (14 Nov 2026)
+
+- **All 14 AI images are in** (hero x2, before/after, craft, 9 services).
+  - The before/after pair was resized 1254 to 1024 and checked for alignment (blend/diff: edges coincide).
+  - No badges or text found.
+- **Still placeholders:** the 6 Work stills, which come from the client.
+- **Before/after keeps the "Illustration" tag** until a real client pair replaces it.
+
 ## Decisions log
 
 - **Offer end date.** The plan default (10 Nov 2026) passed before the build started (12 Nov).
