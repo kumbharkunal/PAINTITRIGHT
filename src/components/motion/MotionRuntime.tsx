@@ -14,20 +14,31 @@ export function MotionRuntime() {
     let started = false;
     let cancelled = false;
     let stop: (() => void) | undefined;
+    let timer = 0;
     const start = () => {
       if (started) return;
       started = true;
       detach();
-      import("@/lib/runtime").then((m) => {
-        if (!cancelled) stop = m.startRuntime();
-      });
+      import("@/lib/runtime").then(
+        (m) => {
+          if (!cancelled) stop = m.startRuntime();
+        },
+        () => {
+          // Download failed (patchy network). The page works without motion; try again
+          // on a later interaction, at most every few seconds.
+          if (cancelled) return;
+          started = false;
+          timer = window.setTimeout(attach, 3000);
+        },
+      );
     };
+    const attach = () => EVENTS.forEach((e) => window.addEventListener(e, start, { passive: true, once: true }));
     const detach = () => {
       EVENTS.forEach((e) => window.removeEventListener(e, start));
       window.clearTimeout(timer);
     };
-    EVENTS.forEach((e) => window.addEventListener(e, start, { passive: true, once: true }));
-    const timer = window.setTimeout(start, FALLBACK_MS);
+    attach();
+    timer = window.setTimeout(start, FALLBACK_MS);
     // a visitor who arrives mid-page (back/forward, anchor) needs scenes right away
     if (window.scrollY > 40) start();
     return () => {

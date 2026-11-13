@@ -61,10 +61,14 @@ Kunal's notes, and what changed:
 - **Also fixed on the way**
   - **Slashed zeros:** numbers showed a code-style slashed zero, because Mona Sans's tabular figures use one. Numbers now use its default lining figures.
   - **No-JS:** every section after the hero stayed hidden, because React streams each Suspense boundary and reveals it with an inline script. A `<noscript>` style now shows them in order, with the footer last. Layout is identical with and without JS.
+  - **Patchy network:** if the menu's Motion chunk failed to download (Turbopack retries once), the failed promise was cached and the mobile menu never opened again until a reload.
+    - Now a failed download is forgotten and the next tap tries again; LazyMotion waits for the first success from any caller.
+    - The GSAP/Lenis runtime also retries on a later interaction.
+    - Covered by a fault-injection test in `tests/menu.spec.ts`. It failed on the old build.
 - **Results (local production build)**
   - **Lighthouse mobile:** 100 / 100 / 100 / 66 (noindex). LCP 1.1 s, TBT 30 ms, CLS 0.
   - **Lighthouse desktop:** 100 / 100 / 100 / 66.
-  - **Playwright:** 42 pass, 4 skipped.
+  - **Playwright:** 43 pass, 5 skipped.
 
 ## Decisions log
 
@@ -81,6 +85,7 @@ Kunal's notes, and what changed:
 - **Each section in its own Suspense boundary** so hydration runs in small tasks. React reveals the streamed sections with inline scripts on the first frame; the `<noscript>` style in `layout.tsx` covers visitors without JS.
 - **Hubot Sans barred zero:** numerals in display or label text use Mona Sans (`.num`), with lining figures. Never `tabular-nums`: Mona's tabular set has a slashed zero.
 - **Rails never get `data-lenis-prevent`:** it blocks vertical scrolling that starts on them.
+- **Lazy chunks must survive a failed download:** never cache a rejected `import()` promise. Retry on the next call or interaction.
 - **No paint booth claims** in copy or AI image prompts (painting happens in an open yard).
 
 ## Open TODO(client)

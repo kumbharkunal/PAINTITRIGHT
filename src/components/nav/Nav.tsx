@@ -247,10 +247,11 @@ export function Nav() {
           aria-expanded={open}
           aria-controls="site-menu"
           aria-label={open ? "Close menu" : "Open menu"}
-          onPointerDown={() => void loadMotionFeatures()}
+          onPointerDown={() => void loadMotionFeatures().catch(() => {})}
           onClick={() => {
             if (open) close(true);
-            else loadMotionFeatures().then(() => requestAnimationFrame(() => setOpen(true)));
+            // If the download failed, nothing opens and the next tap downloads again.
+            else loadMotionFeatures().then(() => requestAnimationFrame(() => setOpen(true)), () => {});
           }}
         >
           <span aria-hidden="true">{open ? "Close" : "Menu"}</span>
